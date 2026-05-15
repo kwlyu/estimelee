@@ -1,0 +1,12 @@
+name: Estimelee_Teacher
+title: Estimelee_Teacher
+username: estimelee
+account: estimelee
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10712941
+bundleId: 8012145
+url: https://estimelee.shinyapps.io/Estimelee_Teacher/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

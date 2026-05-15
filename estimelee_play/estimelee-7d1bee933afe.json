@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "estimelee",
+  "private_key_id": "7d1bee933afe56aa01ec8a5b6e894e013b97cc17",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCkOzxScVPglLdA\nJ53dwErMsZd0x3jSP8rWGpE+V9s1OLiONNkwJg+xx8HXYSe6RexQ16VV4Qn8Zu84\njrjei7esSF+L5LWRadpBqBnnG1uFcM2NwAYfPp6YZKZPmVOZQkrIkMIA/LG/5M0a\n5bkW2uAKVDl9+XlRmk+j3M4Q16veLups72wzYMqc9ZUSLLwX5NdEQelK3gCLu7cm\nFBJQbwBF2KKrNySVVbl58MBx7x8MYAK8sKBf7hE4EGyAE1XWpmGrd88y/tpRRHf1\nhraVXXHvRPyhS5tsqMZRY4PKPS9HUwTPKODdhduTJUsbqbOHyhYfGgsHJuUy8ZHm\nz8Yw5TTVAgMBAAECggEAFHvG5El6OrKRwJCwYe4P5kPoLgqLCT4noFij8PCoSJUQ\nf7wbsqOspXHSvXhCqjr6ZILg/jsZMb/s6lLyv98RQ42rTRlzg/V94V6EDI0e9x/A\no4NlwBPhWASFsbvf72eTSDy11cWurc5tvoMUeMNH2kHzAcFR3lmuwTNTCEq+BvID\n210sevxMfM/MJ7JQIH0jO8J9U7clZHE0Q3IgArA5dfaTA0kwwE/Ej4mivqy/0orJ\nhoN7jy0btzZT4MlBqL3UBId6i1F60NP4OoGtyeW53+7Hq+FV2UzDSgI6lvNSoH9I\nZsfgaE+62XTCbBpDx5agg1Ti78jLqBDoKHSRAqcwQQKBgQDWqBCvzrwPy/4CCRxH\nOQiMqmYfWke3pvH3tZH4ttAGZ2E6DxYsCRhe/bifM0q3TSbIBfaR9GRLdBIWYPOT\nG2p2/okg3CrezlREcJGpZvYzEOYjJhcXfuY7Qt3mBwZUj2k7SuNjtEkSQFKgZtRr\nxR9b6MpSPVYx97LIm/pErXBcaQKBgQDD3OQAmbxcUu5mI9vIp5MTo8OToGVkh6CS\nohrj5OdxcDkdwyVKrmxt/L7axIPBZ1LoniQphYMK2ElnoA813AJ0R3mj6pboFYxi\n68+lx6FRW3//SzF0X+3et2h4lN170/pLnPEkNbKyXGsxeb6L6i2zEqB0DckTanTV\n5weR8vH3jQKBgCH6fJm3ueEuQ0kDNCy6BHZvyraPzeZuUMMLRM3/8jHxT1ynYrUZ\nw3fV5dGdhug5GDh1aTB1ZSLkfrB4LFZO8q1fYUmIUGjwdDpZL1WHbNVsiWFq+CDJ\n/5vF2+Y7mm7sPJYcJp5zvVVcRTgKzvk4PNyJnu0htHE4al6DAjy4z55xAoGAV0yu\nh6H+dfw07GvRO7eNc7SLqNJWPx/Ar3r3l1pg2owVuTFQ/t+NztxXyTTMMTk3mB1c\nqvEqfnv3A+wwu2Xr5h4xlqEqUBnCsBjBPfgj7Bpni8fdLCzR3nJLa2uW6OmL54X1\naZlRo/RThwLnrn9bjTShNfkrBa9ukiTel+v8c8UCgYA+HukgsHr2FvMxj6M8WtPq\nklnb0vZvr5gXz/gRkVJojCcJFeuv7xQRuHj+7gnCz0A/myPJ7igpwf3kP7izwYPw\nO7ePAo+JodVG1QrA0PBo4GM37PI7FtbMrEadS8lSBFZF3BgKrJrOaP3aFe49fC5G\n2XCKi4Zr9nzf9Aerm4G5CA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "estimelee2@estimelee.iam.gserviceaccount.com",
+  "client_id": "114871090774552758569",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/estimelee2%40estimelee.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

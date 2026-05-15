@@ -1,0 +1,12 @@
+name: main
+title: main
+username: estimelee
+account: estimelee
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10734631
+bundleId: 8037031
+url: https://estimelee.shinyapps.io/main/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
