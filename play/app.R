@@ -19,41 +19,10 @@ library(memoise)
 library(gargle)
 library(httr)
 
-# # Google authorizations
-# gs4_auth_configure(api_key = "AIzaSyCGAF-Xnf94XW-Ubcaoe9gwYmd3ja9Mm3A")
-# googledrive::drive_auth(email = "aronsonj2@carleton.edu", cache = ".secrets")
-# gs4_auth(email = "aronsonj2@carleton.edu", cache = ".secrets")
-# setwd(getwd())
-# gs4_auth(email = "aronsonj2@carleton.edu", cache = ".secrets")
-
-
-# the preferred way to configure your own client is via a JSON file
-# downloaded from Google Developers Console
-# this example JSON is indicative, but fake
-# path_to_json <- system.file(
-#   "extdata", "client_secret_550659436353-isv6fb9dhadln2ifi1518b22h6q4pavg.apps.googleusercontent.com.json",
-#   package = "gargle"
-# )
-
-# path_to_json <- "client_secret_550659436353-isv6fb9dhadln2ifi1518b22h6q4pavg.apps.googleusercontent.com.json"
-# #
-# gs4_auth_configure(path = path_to_json)
-#
-# # this is also obviously a fake API key
-# gs4_auth_configure(api_key = "AIzaSyDKoPYCSEScgYY6jI-z5aJSiiCShRC1U-M")
-# # gs4_auth(email = "lyuk@carleton.edu", cache = ".secrets")
 
 
 
-# gs4_deauth()
-# google_client <- gargle::gargle_oauth_client_from_json(
-#   path = "client_secret_550659436353-ttcu9r63unphmnbqvhv1761s1m9uuq6o.apps.googleusercontent.com.json",
-#   name = "estimelee-google-client"
-# )
-# drive_auth_configure(app = google_client)
-
-
-gs4_auth(path = "estimelee-510919-f678c0162497.json")
+gs4_auth(path = "estimelee-510919-bdd12e3297c9.json")
 
 # Sets contest list and custom colors
 contest_list <- read_sheet("https://docs.google.com/spreadsheets/d/1xNZXuFVriHnLpwBilEH5BulwEw4b566Tv4IK_9JzsU4/edit#gid=0")
