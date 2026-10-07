@@ -5,7 +5,7 @@ account: estimelee
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10734676
-bundleId: 8044829
+bundleId: 12661554
 url: https://estimelee.shinyapps.io/create/
 version: 1
 asMultiple: FALSE

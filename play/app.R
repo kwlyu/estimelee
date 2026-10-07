@@ -53,7 +53,7 @@ library(httr)
 # drive_auth_configure(app = google_client)
 
 
-gs4_auth(path = "estimelee-7d1bee933afe.json")
+gs4_auth(path = "estimelee-510919-f678c0162497.json")
 
 # Sets contest list and custom colors
 contest_list <- read_sheet("https://docs.google.com/spreadsheets/d/1xNZXuFVriHnLpwBilEH5BulwEw4b566Tv4IK_9JzsU4/edit#gid=0")
@@ -471,85 +471,269 @@ server <- function(input, output, session) {
 
   c_id <- reactive({filter(contest_list, Title == as.character(input$contest))[[1,1]]})
 
-  observeEvent(input$try == TRUE, {
+  # observeEvent(input$try == TRUE, {
+  # 
+  #   shinyjs::disable("update")
+  #   shinyjs::disable("try")
+  #   if (input$team != "")
+  #   {Answer_sheet <- read_sheet(c_id(), sheet = "answers")
+  #   num_questions <- length(1:sum(!is.na(Answer_sheet[[2]])))
+  #   if (!is.na(input$lower) & !is.na(input$upper)){
+  #     if ((input$questions == "") | (as.integer(input$questions) > 15) |
+  #         (as.integer(input$questions) > num_questions) | (is.na(as.integer(input$questions)))) {
+  #       shinyalert(title = "Question does not exist", text = "Make sure you enter the right question number", type = "error", closeOnEsc = TRUE,
+  #                  closeOnClickOutside = TRUE, timer = 10000)
+  #     } else if (((is.na(as.numeric(input$lower)))) | (is.na(as.numeric(input$upper)))) {
+  #       shinyalert(title = "Invalid Guess", text = "Your answer must be a whole number", type = "error", closeOnEsc = TRUE,
+  #                  closeOnClickOutside = TRUE, timer = 10000)
+  #     } else if ((length(as.character(input$lower)) > 18) | (length(as.character(input$upper)) > 18)) {
+  #       shinyalert(title = "Invalid Guess", text = "Your interval is too large, try again", type = "error", closeOnEsc = TRUE,
+  #                  closeOnClickOutside = TRUE, timer = 10000)
+  #     } else if (as.numeric(input$lower) > as.numeric(input$upper)) {
+  #       shinyalert(title = "Invalid Guess", text = "Make sure your lower bound is less than or equal to your upper bound", type = "error", closeOnEsc = TRUE,
+  #                  closeOnClickOutside = TRUE, timer = 10000)
+  #     } else if ((as.numeric(input$lower) <= 0) |
+  #                (as.numeric(input$upper) <= 0)) {
+  #       shinyalert(title = "Invalid Guess", text = "Please make sure you have a positive interval", type = "error", closeOnEsc = TRUE,
+  #                  closeOnClickOutside = TRUE, timer = 10000)
+  #     } else {
+  #       # Sys.sleep(1.5)
+  #       currentResultsData <- read_sheet(c_id(), sheet = "submissions")
+  #       submissionsCount <- nrow(filter(currentResultsData, Team == input$team, Question == input$questions))
+  #       if (submissionsCount == 3){
+  #         shinyalert(title = "Maximum Submissions Reached", text = "You are out of attempts.", type = "error", closeOnEsc = TRUE,
+  #                    closeOnClickOutside = TRUE, timer = 10000)
+  #       }
+  #       else {
+  #         # Sys.sleep(1.5)
+  #         answer <- as.numeric(Answer_sheet[[as.integer(input$questions), 3]])
+  #         # if (as.character(input$estAlg) == 1) {
+  #         #   score <- est1(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 2) {
+  #         #   score <- est2(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 3) {
+  #         #   score <- est3(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 4) {
+  #         #   score <- est4(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 5) {
+  #         #   score <- est5(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 6) {
+  #         #   score <- est6(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 7) {
+  #         #   score <- est7(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 8) {
+  #         #   score <- est8(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+  #         # } else if (as.character(input$estAlg) == 9) {
+  #         score <- est9(as.numeric(input$lower), as.numeric(input$upper), answer)
+  #         # } else {
+  #         #   score <- 200
+  #         # }
+  #         score <- round(score, digits = 2)
+  #         if ((as.numeric(input$lower) <= answer) &
+  #             (as.numeric(input$upper) >= answer)) {
+  #           contains <- TRUE
+  #         } else {
+  #           contains <- FALSE
+  #         }
+  #         sheet_append(
+  #           c_id(),
+  #           data = data.frame(input$team, input$questions, input$lower, input$upper, score, contains),
+  #           sheet = 2)
+  #         shinyalert(title = "Submission Success", text = "Exit and click update to see your results", type = "success", closeOnEsc = TRUE,
+  #                    closeOnClickOutside = TRUE, timer = 10000)}
+  # 
+  #     }
+  # 
+  #   }}
+  #   shinyjs::enable("try")
+  #   shinyjs::enable("update")}
+  # )
 
+  observeEvent(input$try == TRUE, {
+    
     shinyjs::disable("update")
     shinyjs::disable("try")
-    if (input$team != "")
-    {Answer_sheet <- read_sheet(c_id(), sheet = "answers")
-    num_questions <- length(1:sum(!is.na(Answer_sheet[[2]])))
-    if (!is.na(input$lower) & !is.na(input$upper)){
-      if ((input$questions == "") | (as.integer(input$questions) > 15) |
-          (as.integer(input$questions) > num_questions) | (is.na(as.integer(input$questions)))) {
-        shinyalert(title = "Question does not exist", text = "Make sure you enter the right question number", type = "error", closeOnEsc = TRUE,
-                   closeOnClickOutside = TRUE, timer = 10000)
-      } else if (((is.na(as.numeric(input$lower)))) | (is.na(as.numeric(input$upper)))) {
-        shinyalert(title = "Invalid Guess", text = "Your answer must be a whole number", type = "error", closeOnEsc = TRUE,
-                   closeOnClickOutside = TRUE, timer = 10000)
-      } else if ((length(as.character(input$lower)) > 18) | (length(as.character(input$upper)) > 18)) {
-        shinyalert(title = "Invalid Guess", text = "Your interval is too large, try again", type = "error", closeOnEsc = TRUE,
-                   closeOnClickOutside = TRUE, timer = 10000)
-      } else if (as.numeric(input$lower) > as.numeric(input$upper)) {
-        shinyalert(title = "Invalid Guess", text = "Make sure your lower bound is less than or equal to your upper bound", type = "error", closeOnEsc = TRUE,
-                   closeOnClickOutside = TRUE, timer = 10000)
-      } else if ((as.numeric(input$lower) <= 0) |
-                 (as.numeric(input$upper) <= 0)) {
-        shinyalert(title = "Invalid Guess", text = "Please make sure you have a positive interval", type = "error", closeOnEsc = TRUE,
-                   closeOnClickOutside = TRUE, timer = 10000)
-      } else {
-        # Sys.sleep(1.5)
-        currentResultsData <- read_sheet(c_id(), sheet = "submissions")
-        submissionsCount <- nrow(filter(currentResultsData, Team == input$team, Question == input$questions))
-        if (submissionsCount == 3){
-          shinyalert(title = "Maximum Submissions Reached", text = "You are out of attempts.", type = "error", closeOnEsc = TRUE,
-                     closeOnClickOutside = TRUE, timer = 10000)
-        }
-        else {
-          # Sys.sleep(1.5)
-          answer <- as.numeric(Answer_sheet[[as.integer(input$questions), 3]])
-          # if (as.character(input$estAlg) == 1) {
-          #   score <- est1(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 2) {
-          #   score <- est2(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 3) {
-          #   score <- est3(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 4) {
-          #   score <- est4(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 5) {
-          #   score <- est5(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 6) {
-          #   score <- est6(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 7) {
-          #   score <- est7(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 8) {
-          #   score <- est8(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
-          # } else if (as.character(input$estAlg) == 9) {
-          score <- est9(as.numeric(input$lower), as.numeric(input$upper), answer)
-          # } else {
-          #   score <- 200
-          # }
-          score <- round(score, digits = 2)
-          if ((as.numeric(input$lower) <= answer) &
-              (as.numeric(input$upper) >= answer)) {
-            contains <- TRUE
+    
+    if (input$team != "") {
+      
+      Answer_sheet <- read_sheet(c_id(), sheet = "answers")
+      num_questions <- length(1:sum(!is.na(Answer_sheet[[2]])))
+      
+      if (!is.na(input$lower) & !is.na(input$upper)) {
+        
+        if ((input$questions == "") | (as.integer(input$questions) > 15) |
+            (as.integer(input$questions) > num_questions) |
+            (is.na(as.integer(input$questions)))) {
+          
+          shinyalert(
+            title = "Question does not exist",
+            text = "Make sure you enter the right question number",
+            type = "error",
+            closeOnEsc = TRUE,
+            closeOnClickOutside = TRUE,
+            timer = 10000
+          )
+          
+        } else if ((is.na(as.numeric(input$lower))) |
+                   (is.na(as.numeric(input$upper)))) {
+          
+          shinyalert(
+            title = "Invalid Guess",
+            text = "Your answer must be a whole number",
+            type = "error",
+            closeOnEsc = TRUE,
+            closeOnClickOutside = TRUE,
+            timer = 10000
+          )
+          
+        } else if ((length(as.character(input$lower)) > 18) |
+                   (length(as.character(input$upper)) > 18)) {
+          
+          shinyalert(
+            title = "Invalid Guess",
+            text = "Your interval is too large, try again",
+            type = "error",
+            closeOnEsc = TRUE,
+            closeOnClickOutside = TRUE,
+            timer = 10000
+          )
+          
+        } else if (as.numeric(input$lower) > as.numeric(input$upper)) {
+          
+          shinyalert(
+            title = "Invalid Guess",
+            text = "Make sure your lower bound is less than or equal to your upper bound",
+            type = "error",
+            closeOnEsc = TRUE,
+            closeOnClickOutside = TRUE,
+            timer = 10000
+          )
+          
+        } else if ((as.numeric(input$lower) <= 0) |
+                   (as.numeric(input$upper) <= 0)) {
+          
+          shinyalert(
+            title = "Invalid Guess",
+            text = "Please make sure you have a positive interval",
+            type = "error",
+            closeOnEsc = TRUE,
+            closeOnClickOutside = TRUE,
+            timer = 10000
+          )
+          
+        } else {
+          
+          currentResultsData <- read_sheet(c_id(), sheet = "submissions")
+          
+          submissionsCount <- sum(
+            currentResultsData[[1]] == input$team &
+              currentResultsData[[2]] == input$questions,
+            na.rm = TRUE
+          )
+          
+          duplicate <- any(
+            currentResultsData[[1]] == input$team &
+              currentResultsData[[2]] == input$questions &
+              as.numeric(currentResultsData[[3]]) == as.numeric(input$lower) &
+              as.numeric(currentResultsData[[4]]) == as.numeric(input$upper),
+            na.rm = TRUE
+          )
+          
+          if (duplicate) {
+            
+            shinyalert(
+              title = "Duplicate Interval",
+              text = "You have already submitted this interval.",
+              type = "error",
+              closeOnEsc = TRUE,
+              closeOnClickOutside = TRUE,
+              timer = 10000
+            )
+            
+          } else if (submissionsCount == 3) {
+            
+            shinyalert(
+              title = "Maximum Submissions Reached",
+              text = "You are out of attempts.",
+              type = "error",
+              closeOnEsc = TRUE,
+              closeOnClickOutside = TRUE,
+              timer = 10000
+            )
+            
           } else {
-            contains <- FALSE
+            
+            answer <- as.numeric(
+              Answer_sheet[[as.integer(input$questions), 3]]
+            )
+            
+            # if (as.character(input$estAlg) == 1) {
+            #   score <- est1(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 2) {
+            #   score <- est2(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 3) {
+            #   score <- est3(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 4) {
+            #   score <- est4(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 5) {
+            #   score <- est5(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 6) {
+            #   score <- est6(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 7) {
+            #   score <- est7(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 8) {
+            #   score <- est8(as.integer64.character(input$lower), as.integer64.character(input$upper), answer)
+            # } else if (as.character(input$estAlg) == 9) {
+            
+            score <- est9(
+              as.numeric(input$lower),
+              as.numeric(input$upper),
+              answer
+            )
+            
+            # } else {
+            #   score <- 200
+            # }
+            
+            score <- round(score, digits = 2)
+            
+            if ((as.numeric(input$lower) <= answer) &
+                (as.numeric(input$upper) >= answer)) {
+              contains <- TRUE
+            } else {
+              contains <- FALSE
+            }
+            
+            sheet_append(
+              c_id(),
+              data = data.frame(
+                input$team,
+                input$questions,
+                input$lower,
+                input$upper,
+                score,
+                contains
+              ),
+              sheet = 2
+            )
+            
+            shinyalert(
+              title = "Submission Success",
+              text = "Exit and click update to see your results",
+              type = "success",
+              closeOnEsc = TRUE,
+              closeOnClickOutside = TRUE,
+              timer = 10000
+            )
           }
-          sheet_append(
-            c_id(),
-            data = data.frame(input$team, input$questions, input$lower, input$upper, score, contains),
-            sheet = 2)
-          shinyalert(title = "Submission Success", text = "Exit and click update to see your results", type = "success", closeOnEsc = TRUE,
-                     closeOnClickOutside = TRUE, timer = 10000)}
-
+        }
       }
-
-    }}
+    }
+    
     shinyjs::enable("try")
-    shinyjs::enable("update")}
-  )
-
-
+    shinyjs::enable("update")
+  })
+ 
   resultsData <- reactive({
     input$update
     # Sys.sleep(1.5)
